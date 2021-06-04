@@ -6,4 +6,3 @@ A new Flutter application.
 
 
 
-![End Banner](D:\flutterprojects\flutter_carselona\documentation\WelcomeScreen.png)
