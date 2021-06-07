@@ -1,6 +1,6 @@
 # flutter_carselona
 
-A new Flutter application.
+REST API integration to get daily stats on the dashboard screen using API calls
 
 ## Getting Started
 
