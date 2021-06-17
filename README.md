@@ -9,6 +9,7 @@ REST API integration to get daily stats on the dashboard screen using API calls
 - Stack widget and Positioned widget for background
 - Gesture detector onTap
 - Shared preferences for remembering the logged in user
+- Toast notification wherever required
 
 
 
