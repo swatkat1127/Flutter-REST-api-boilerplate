@@ -49,29 +49,29 @@ class Login extends StatelessWidget {
             RoundedButton(
               text: "LOGIN",
               press: () async {
-                String loginUrl = env['baseUrl']+'/login';
+                String loginUrl = env['baseUrl'] + '/login';
                 var response = await http.post(
                   loginUrl,
                   headers: {"Accept": "application/json"},
-                  body: { "email":email, "password": password},
+                  body: {"email": email, "password": password},
                 );
                 var data = json.decode(response.body);
                 // print("sent from server::");
                 // print(data); // to check data
-                if(data['status'] == 200){
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                if (data['status'] == 200) {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
                   prefs.setString('email', data['data']['email']);
                   // prefs.setString('token', data['token']);
                   Fluttertoast.showToast(msg: 'login successful');
 
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext ctx) => HomePage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext ctx) => HomePage()));
+                } else {
+                  Fluttertoast.showToast(msg: data['msg']);
                 }
-                else
-                  {
-                    Fluttertoast.showToast(msg: data['msg']);
-                  }
-
               },
             ),
             SizedBox(height: size.height * 0.03),

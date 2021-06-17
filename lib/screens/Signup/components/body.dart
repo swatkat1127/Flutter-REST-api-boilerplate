@@ -11,8 +11,6 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_carselona/Screens/homepage.dart';
 
-
-
 class Body extends StatelessWidget {
   String email;
   String password;
@@ -25,7 +23,6 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
             Image.asset(
               "assets/icons/carselona.png",
               height: 300,
@@ -55,18 +52,24 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "SIGNUP",
               press: () async {
-                String signUpURL = env['baseUrl']+'/signup';
+                String signUpURL = env['baseUrl'] + '/signup';
                 // print(signUpURL);
                 var response = await http.post(
                   signUpURL,
                   headers: {"Accept": "application/json"},
-                  body: { "email":email, "password": password,"password2": password2},
+                  body: {
+                    "email": email,
+                    "password": password,
+                    "password2": password2
+                  },
                 );
                 var data = json.decode(response.body);
                 // print("sent from server::");
                 // print(data);
-                Navigator.push(context,
-                 MaterialPageRoute(builder: (BuildContext ctx) => HomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext ctx) => HomePage()));
               },
             ),
             SizedBox(height: size.height * 0.03),
